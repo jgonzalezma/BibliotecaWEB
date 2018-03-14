@@ -102,4 +102,21 @@ public class ModeloLibro extends Conector {
 	public void mostrarLibro(Libro libro) {
 		System.out.println("ID: " + libro.getId() + "\nTitulo: " + libro.getTitulo() + "\nAutor: " + libro.getAutor());
 	}
+
+	public boolean existe(Libro libro) {
+		try {
+			PreparedStatement pst = super.conexion
+					.prepareStatement("SELECT * FROM libros WHERE titulo = ? AND autor = ?");
+			pst.setString(1, libro.getTitulo());
+			pst.setString(2, libro.getAutor());
+			ResultSet rs = pst.executeQuery();
+			if (rs.next()) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+			return false;
+		}
+	}
 }
