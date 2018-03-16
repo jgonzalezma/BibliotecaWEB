@@ -21,8 +21,12 @@
 			}
 
 		}
-	}
 
+	}
+	if (request.getParameter("eliminar") != null) {
+		int id = Integer.parseInt(request.getParameter("id"));
+		modeloLibro.delete(id);
+	}
 	ArrayList<Libro> libros = modeloLibro.selectAll();
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -40,7 +44,6 @@
 	}
 	function eliminarLibro() {
 		alert("¿Estas seguro? Si procede el libro se eliminara");
-		document.getElementById("eliminar").innerHTML = "<input type=button href='www.google.com' name='guardar' value='Guardar'/>";
 	}
 </script>
 </head>
@@ -67,8 +70,8 @@
 				<td><%=libro.getAutor()%></td>
 				<td style="width: 100px;"><a
 					href="fichalibro.jsp?id=<%=libro.getId()%>">Ver</a></td>
-				<td id="eliminar"><input type='button' value='eliminar'
-					onclick='eliminarLibro()'></td>
+				<td style="width: 100px;"><a onclick="eliminarLibro()"
+					href="listar.jsp?id=<%=libro.getId()%>&eliminar=true">Eliminar</a></td>
 			</tr>
 			<%
 				}

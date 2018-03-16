@@ -41,9 +41,9 @@ public class ModeloLibro extends Conector {
 
 	public void delete(int id) {
 		try {
-			Statement st = conexion.createStatement();
-			st.executeQuery("DELETE FROM libros WHERE id = " + id);
-			st.close();
+			PreparedStatement pst = conexion.prepareStatement("DELETE FROM libros WHERE id=?");
+			pst.setInt(1, id);
+			pst.execute();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
