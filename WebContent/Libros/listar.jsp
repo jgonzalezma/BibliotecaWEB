@@ -36,6 +36,7 @@
 <title>Listar</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
 <script>
 	function crearLibro() {
 		document.getElementById("titulo").innerHTML = "<input type=text name='titulo'/>";
@@ -43,12 +44,24 @@
 		document.getElementById("boton").innerHTML = "<input type=submit name='guardar' value='Guardar'/>";
 	}
 	function eliminarLibro() {
-		alert("¿Estas seguro? Si procede el libro se eliminara");
+		confirm("¿Estas seguro? Si procede el libro se eliminara");
+		if(!confirm){
+			
+		}
 	}
 </script>
 </head>
 <body>
-	<h2>Listar</h2>
+		<nav role="navigation">
+		<div id="menuToggle">
+			<input type="checkbox" /> <span></span> <span></span> <span></span>
+			<ul id="menu">
+				<li><a href="Libros/listar.jsp">Libros</a></li>
+				<li><a href="#">Usuarios</a></li>
+				<li><a href="#">Prestamos</a></li>
+			</ul>
+		</div>
+	</nav>
 	<form method="POST">
 		<table class="table table-bordered table-striped">
 			<thead class="thead-dark">
