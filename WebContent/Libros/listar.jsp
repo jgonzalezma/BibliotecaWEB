@@ -36,7 +36,7 @@
 <title>Listar</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 <script>
 	function crearLibro() {
 		document.getElementById("titulo").innerHTML = "<input type=text name='titulo'/>";
