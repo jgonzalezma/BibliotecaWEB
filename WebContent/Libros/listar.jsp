@@ -36,7 +36,7 @@
 <title>Listar</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="../css/style.css">
 <script>
 	function crearLibro() {
 		document.getElementById("titulo").innerHTML = "<input type=text name='titulo'/>";
@@ -45,22 +45,22 @@
 	}
 	function eliminarLibro() {
 		confirm("¿Estas seguro? Si procede el libro se eliminara");
-		if(!confirm){
-			
+		if (!confirm) {
+
 		}
 	}
 </script>
 </head>
 <body>
-		<nav role="navigation">
-		<div id="menuToggle">
-			<input type="checkbox" /> <span></span> <span></span> <span></span>
-			<ul id="menu">
-				<li><a href="Libros/listar.jsp">Libros</a></li>
-				<li><a href="#">Usuarios</a></li>
-				<li><a href="#">Prestamos</a></li>
-			</ul>
-		</div>
+	<nav role="navigation">
+	<div id="menuToggle">
+		<input type="checkbox" /> <span></span> <span></span> <span></span>
+		<ul id="menu">
+			<li><a href="Libros/listar.jsp">Libros</a></li>
+			<li><a href="#">Usuarios</a></li>
+			<li><a href="#">Prestamos</a></li>
+		</ul>
+	</div>
 	</nav>
 	<form method="POST">
 		<table class="table table-bordered table-striped">
