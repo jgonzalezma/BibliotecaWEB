@@ -8,7 +8,7 @@
 
 	//Esta accion es de guardar
 	if (request.getParameter("guardar") != null) {
-		if (request.getParameter("titulo") != null && request.getParameter("autor") != null) {
+		if (request.getParameter("titulo") != ("") && request.getParameter("autor") != ("")) {
 			Libro libro = new Libro();
 			String titulo = request.getParameter("titulo");
 			String autor = request.getParameter("autor");
@@ -23,6 +23,7 @@
 		}
 
 	}
+	//Esta accion es de eliminar
 	if (request.getParameter("eliminar") != null) {
 		int id = Integer.parseInt(request.getParameter("id"));
 		modeloLibro.delete(id);
@@ -36,7 +37,10 @@
 <title>Listar</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script>
 	function crearLibro() {
 		document.getElementById("titulo").innerHTML = "<input type=text name='titulo'/>";
@@ -44,63 +48,72 @@
 		document.getElementById("boton").innerHTML = "<input type=submit name='guardar' value='Guardar'/>";
 	}
 	function eliminarLibro() {
-		confirm("¿Estas seguro? Si procede el libro se eliminara");
-		if(!confirm){
-			
+		var e = confirm("¿Estas seguro? Si procede el libro se eliminara");
+		if (e == true) {
+			alert("Has eliminado el libro");
+		} else {
+			window.location = "listar.jsp";
 		}
+	}
+	function modificarLibro() {
+		document.getElementById("titulo").innerHTML = "<input type=text name='titulo'/>";
+		document.getElementById("autor").innerHTML = "<input type=text name='autor'/>";
+		document.getElementById("boton").innerHTML = "<input type=submit name='guardar' value='Guardar'/>";
 	}
 </script>
 </head>
 <body>
-		<nav role="navigation">
-		<div id="menuToggle">
-			<input type="checkbox" /> <span></span> <span></span> <span></span>
-			<ul id="menu">
-				<li><a href="Libros/listar.jsp">Libros</a></li>
-				<li><a href="#">Usuarios</a></li>
-				<li><a href="#">Prestamos</a></li>
-			</ul>
-		</div>
+	<nav role="navigation">
+	<div id="menuToggle">
+		<input type="checkbox" /> <span></span> <span></span> <span></span>
+		<ul id="menu">
+			<li><a href="Libros/listar.jsp">Libros</a></li>
+			<li><a href="#">Usuarios</a></li>
+			<li><a href="#">Prestamos</a></li>
+		</ul>
+	</div>
 	</nav>
-	<form method="POST">
-		<table class="table table-bordered table-striped">
-			<thead class="thead-dark">
+	<div id="tabla">
+		<form method="POST">
+			<table class="table table-bordered table-striped">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">Libro</th>
+						<th scope="col">Autor</th>
+						<th scope="col">Ver</th>
+						<th scope="col">Eliminar</th>
+						<th scope="col">Editar</th>
+					</tr>
+				</thead>
+				<%
+					Iterator<Libro> i = libros.iterator();
+					Libro libro;
+					while (i.hasNext()) {
+						libro = i.next();
+				%>
 				<tr>
-					<th scope="col">Libro</th>
-					<th scope="col">Autor</th>
-					<th scope="col">Ver</th>
-					<th scope="col"></th>
+					<td><%=libro.getTitulo()%></td>
+					<td><%=libro.getAutor()%></td>
+					<td style="width: 100px;"><a
+						href="fichalibro.jsp?id=<%=libro.getId()%>">Ver</a></td>
+					<td style="width: 100px;"><a onclick="eliminarLibro()">Eliminar</a></td>
+					<td style="width: 100px"><a onclick="modificarLibro()"
+						href="modificar.jsp">Editar</a></td>
 				</tr>
-			</thead>
-			<%
-				Iterator<Libro> i = libros.iterator();
-				Libro libro;
-				while (i.hasNext()) {
-					libro = i.next();
-			%>
-			<tr>
-				<td><%=libro.getTitulo()%></td>
-				<td><%=libro.getAutor()%></td>
-				<td style="width: 100px;"><a
-					href="fichalibro.jsp?id=<%=libro.getId()%>">Ver</a></td>
-				<td style="width: 100px;"><a onclick="eliminarLibro()"
-					href="listar.jsp?id=<%=libro.getId()%>&eliminar=true">Eliminar</a></td>
-			</tr>
-			<%
-				}
-			%>
-			<tr>
-				<td id="titulo"></td>
-				<td id="autor"></td>
-				<td id="boton"><input type="button" value="crear"
-					onclick="crearLibro()"></td>
-			</tr>
+				<%
+					}
+				%>
+				<tr>
+					<td id="titulo"></td>
+					<td id="autor"></td>
+					<td id="boton"><input type="button" value="crear"
+						onclick="crearLibro()"></td>
+					<td></td>
+					<td></td>
+				</tr>
 
-		</table>
-	</form>
-
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+			</table>
+		</form>
+	</div>
 </body>
 </html>

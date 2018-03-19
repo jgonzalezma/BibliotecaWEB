@@ -8,7 +8,7 @@ body {
 
 a {
 	text-decoration: none;
-	color: #232323;
+	color: #c0c0c0;
 	transition: color 0.3s ease;
 }
 
@@ -24,6 +24,7 @@ a:hover {
 	z-index: 1;
 	-webkit-user-select: none;
 	user-select: none;
+	float: left;
 }
 
 #menuToggle input {
@@ -109,10 +110,10 @@ a:hover {
 	padding: 10px 0;
 	font-size: 22px;
 }
-
 /*
  * And let's slide it in from the left
  */
 #menuToggle input:checked ~ ul {
 	transform: none;
 }
+
