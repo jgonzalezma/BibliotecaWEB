@@ -34,13 +34,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Listar</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="../css/style.css">
+<jsp:include page="../include/scripts.html"></jsp:include>
 <script>
+	$(document).ready(function() {
+		var cont = 0;
+		$("tr").click(function() {
+			if (cont == 0) {
+				$(this).css("background-color", "grey");
+				cont = 1;
+			} else {
+				$(this).css("background-color", "white");
+				cont = 0;
+			}
+		});
+	});
+
 	function crearLibro() {
-		document.getElementById("titulo").innerHTML = "<input type=text name='titulo'/>";
-		document.getElementById("autor").innerHTML = "<input type=text name='autor'/>";
+		document.getElementById("titulo").innerHTML = "<input type=text name='titulo' placeholder='Inserte Titulo'/>";
+		document.getElementById("autor").innerHTML = "<input type=text name='autor' placeholder='Inserte Autor'/>";
 		document.getElementById("boton").innerHTML = "<input type=submit name='guardar' value='Guardar'/>";
 	}
 	function eliminarLibro() {
@@ -52,16 +63,7 @@
 </script>
 </head>
 <body>
-	<nav role="navigation">
-	<div id="menuToggle">
-		<input type="checkbox" /> <span></span> <span></span> <span></span>
-		<ul id="menu">
-			<li><a href="Libros/listar.jsp">Libros</a></li>
-			<li><a href="#">Usuarios</a></li>
-			<li><a href="#">Prestamos</a></li>
-		</ul>
-	</div>
-	</nav>
+	<jsp:include page="../include/menu.html"></jsp:include>
 	<form method="POST">
 		<table class="table table-bordered table-striped">
 			<thead class="thead-dark">
@@ -69,6 +71,7 @@
 					<th scope="col">Libro</th>
 					<th scope="col">Autor</th>
 					<th scope="col">Ver</th>
+					<th scope="col"></th>
 					<th scope="col"></th>
 				</tr>
 			</thead>
@@ -85,6 +88,7 @@
 					href="fichalibro.jsp?id=<%=libro.getId()%>">Ver</a></td>
 				<td style="width: 100px;"><a onclick="eliminarLibro()"
 					href="listar.jsp?id=<%=libro.getId()%>&eliminar=true">Eliminar</a></td>
+				<td style="width: 100px;" class="modificar">Modificar</td>
 			</tr>
 			<%
 				}
@@ -94,13 +98,13 @@
 				<td id="autor"></td>
 				<td id="boton"><input type="button" value="crear"
 					onclick="crearLibro()"></td>
+				<td></td>
+				<td></td>
 			</tr>
 
 		</table>
 	</form>
 
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
 </body>
 </html>
