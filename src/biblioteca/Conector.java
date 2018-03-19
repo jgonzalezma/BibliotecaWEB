@@ -5,11 +5,12 @@ import java.sql.DriverManager;
 
 public class Conector {
 	protected static Connection conexion;
-	
-	Conector(){
+
+	Conector() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			this.conexion = DriverManager.getConnection("jdbc:mysql://" + Config.HOST + "/" + Config.BBDD, Config.USERNAME, Config.PASSWORD);
+			this.conexion = DriverManager.getConnection("jdbc:mysql://" + Config.HOST + "/" + Config.BBDD,
+					Config.USERNAME, Config.PASSWORD);
 		} catch (Exception e) {
 
 		}
@@ -22,6 +23,5 @@ public class Conector {
 	public void setConexion(Connection conexion) {
 		this.conexion = conexion;
 	}
-	
-}
 
+}
