@@ -8,7 +8,7 @@
 
 	//Esta accion es de guardar
 	if (request.getParameter("guardar") != null) {
-		if (request.getParameter("titulo") != null && request.getParameter("autor") != null) {
+		if (request.getParameter("titulo") != "" && request.getParameter("autor") != "") {
 			Libro libro = new Libro();
 			String titulo = request.getParameter("titulo");
 			String autor = request.getParameter("autor");
@@ -17,13 +17,33 @@
 			if (!modeloLibro.existe(libro)) {
 				modeloLibro.insert(libro);
 			} else {
-				out.print("El libro ya existe - Artola 14/03/2018 12:19");
+				out.print(
+						"<p style='text-align: center; font-size: 30px; color:red;'>El libro ya existe - Artola 14/03/2018 12:19</p>");
 			}
 
+		} else {
+			out.print(
+					"<p style='text-align: center; font-size: 30px; color:red;'>El libro ha de tener un titulo y autor</p>");
 		}
 
 	}
-	if (request.getParameter("eliminar") != null) {
+	//Esta accion es de modificar
+	if (request.getParameter("mid") != null) {
+		Libro libro = new Libro();
+		String titulo = request.getParameter("mtitulo");
+		String autor = request.getParameter("mautor");
+		int id = Integer.parseInt(request.getParameter("mid"));
+		libro.setTitulo(titulo);
+		libro.setAutor(autor);
+		libro.setId(id);
+		if (modeloLibro.existe(libro)) {
+			modeloLibro.update(libro);
+		} else {
+
+		}
+	}
+	//Esta accion es de eliminar
+	if (request.getParameter("id") != null) {
 		int id = Integer.parseInt(request.getParameter("id"));
 		modeloLibro.delete(id);
 	}
@@ -44,29 +64,16 @@
 	$(document).ready(function() {
 		$('#table_id').DataTable();
 	});
-	$(document).ready(function() {
-		var cont = 0;
-		$("tr").click(function() {
-			if (cont == 0) {
-				$(this).css("background-color", "grey");
-				cont = 1;
-			} else {
-				$(this).css("background-color", "white");
-				cont = 0;
-			}
-		});
-	});
-
 	function crearLibro() {
 		document.getElementById("titulo").innerHTML = "<input type=text name='titulo' placeholder='Inserte Titulo'/>";
 		document.getElementById("autor").innerHTML = "<input type=text name='autor' placeholder='Inserte Autor'/>";
 		document.getElementById("boton").innerHTML = "<input type=submit name='guardar' value='Guardar'/>";
 	}
-	function eliminarLibro() {
-		confirm("¿Estas seguro? Si procede el libro se eliminara");
-		if (!confirm) {
-
-		}
+	function modificarLibro(id, titulo, autor) {
+		document.getElementById("titulo").innerHTML = "<input type=text name='mtitulo' placeholder='"+titulo+"'/>";
+		document.getElementById("autor").innerHTML = "<input type=text name='mautor' placeholder='"+autor+"'/>";
+		document.getElementById("id").innerHTML = "<input id='mid' name='mid' type='hidden' value="+id+">"
+		document.getElementById("boton").innerHTML = "<input type=submit name='modificar' value='Modificar'/>";
 	}
 </script>
 </head>
@@ -79,7 +86,7 @@
 				<tr>
 					<th scope="col">Libro</th>
 					<th scope="col">Autor</th>
-					<th scope="col">Ver</th>
+					<th style="text-align: center;" scope="col">Ver</th>
 					<th scope="col"></th>
 					<th scope="col"></th>
 				</tr>
@@ -90,14 +97,16 @@
 				while (i.hasNext()) {
 					libro = i.next();
 			%>
-			<tr>
+			<tr class="fila">
 				<td><%=libro.getTitulo()%></td>
 				<td><%=libro.getAutor()%></td>
-				<td style="width: 100px;"><a
+				<td style="width: 100px; text-align: center;"><a
 					href="fichalibro.jsp?id=<%=libro.getId()%>">Ver</a></td>
-				<td style="width: 100px;"><a onclick="eliminarLibro()"
-					href="listar.jsp?id=<%=libro.getId()%>&eliminar=true">Eliminar</a></td>
-				<td style="width: 100px;" class="modificar">Modificar</td>
+				<td style="width: 100px;"><a
+					href="listar.jsp?id=<%=libro.getId()%>">Eliminar</a></td>
+				<td id="modificar" style="width: 100px;"><input type="button"
+					value="Modificar"
+					onclick="modificarLibro(<%=libro.getId()%>,'<%=libro.getTitulo()%>','<%=libro.getAutor()%>')"></td>
 			</tr>
 			<%
 				}
@@ -105,9 +114,9 @@
 			<tr>
 				<td id="titulo"></td>
 				<td id="autor"></td>
-				<td id="boton"><input type="button" value="crear"
-					onclick="crearLibro()"></td>
-				<td></td>
+				<td id="boton" style="text-align: center;"><input type="button"
+					value="Crear" onclick="crearLibro()"></td>
+				<td id="id"></td>
 				<td></td>
 			</tr>
 
