@@ -35,7 +35,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Listar</title>
 <jsp:include page="../include/scripts.html"></jsp:include>
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+
+<script type="text/javascript" charset="utf8"
+	src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
 <script>
+	$(document).ready(function() {
+		$('#table_id').DataTable();
+	});
 	$(document).ready(function() {
 		var cont = 0;
 		$("tr").click(function() {
@@ -64,8 +72,9 @@
 </head>
 <body>
 	<jsp:include page="../include/menu.html"></jsp:include>
+	<h1 style="text-align: center;">Libros</h1>
 	<form method="POST">
-		<table class="table table-bordered table-striped">
+		<table id="table_id" class="display">
 			<thead class="thead-dark">
 				<tr>
 					<th scope="col">Libro</th>
