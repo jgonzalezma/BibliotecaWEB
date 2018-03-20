@@ -185,4 +185,20 @@ public class ModeloUsuario extends Conector {
 
 		return sqlDate;
 	}
+	public boolean existe(Usuario usuario) {
+		try {
+			PreparedStatement pst = super.conexion
+					.prepareStatement("SELECT * FROM usuarios WHERE nombre = ? AND apellido = ?");
+			pst.setString(1, usuario.getNombre());
+			pst.setString(2, usuario.getApellido());
+			ResultSet rs = pst.executeQuery();
+			if (rs.next()) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+			return false;
+		}
+	}
 }

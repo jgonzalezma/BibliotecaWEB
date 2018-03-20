@@ -28,6 +28,16 @@
 		int id = Integer.parseInt(request.getParameter("id"));
 		modeloLibro.delete(id);
 	}
+	//Esta accion es de modificar
+	if (request.getParameter("guardar") != null){
+		if (request.getParameter("titulo") != ("") && request.getParameter("autor") != ("")) {
+			String titulo = request.getParameter("titulo");
+			String autor = request.getParameter("autor");
+			
+		}
+	}else{
+		
+	}
 	ArrayList<Libro> libros = modeloLibro.selectAll();
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -67,12 +77,13 @@
 	<div id="menuToggle">
 		<input type="checkbox" /> <span></span> <span></span> <span></span>
 		<ul id="menu">
-			<li><a href="Libros/listar.jsp">Libros</a></li>
-			<li><a href="#">Usuarios</a></li>
+			<li><a href="#">Libros</a></li>
+			<li><a href="../Usuarios/listarUsuarios.jsp">Usuarios</a></li>
 			<li><a href="#">Prestamos</a></li>
 		</ul>
 	</div>
 	</nav>
+	<h1 style="text-align: center;">Libros</h1>
 	<div id="tabla">
 		<form method="POST">
 			<table class="table table-bordered table-striped">
@@ -97,8 +108,7 @@
 					<td style="width: 100px;"><a
 						href="fichalibro.jsp?id=<%=libro.getId()%>">Ver</a></td>
 					<td style="width: 100px;"><a onclick="eliminarLibro()">Eliminar</a></td>
-					<td style="width: 100px"><a onclick="modificarLibro()"
-						href="modificar.jsp">Editar</a></td>
+					<td style="width: 100px"><a onclick="modificarLibro()">Editar</a></td>
 				</tr>
 				<%
 					}
