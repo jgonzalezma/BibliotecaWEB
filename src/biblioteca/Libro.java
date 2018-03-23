@@ -1,6 +1,7 @@
 package biblioteca;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Libro {
 	private int id;
@@ -48,6 +49,17 @@ public class Libro {
 
 	public void setPrestamos(ArrayList<Prestamo> prestamos) {
 		this.prestamos = prestamos;
+	}
+	public boolean estaPrestado(){
+		Iterator<Prestamo> i = this.prestamos.iterator();
+		Prestamo prestamo;
+		
+		while(i.hasNext()){
+			prestamo = i.next();
+			if(!prestamo.isEntregado()){
+				return true; //el libro NO ESTA DISPONIBLE porque esta prestado
+			}
+		}return false; //el libro ESTA DISPONIBLE porque no esta prestado
 	}
 
 }

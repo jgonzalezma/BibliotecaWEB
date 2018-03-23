@@ -57,12 +57,11 @@
 		document.getElementById("autor").innerHTML = "<input type=text name='autor'/>";
 		document.getElementById("boton").innerHTML = "<input type=submit name='guardar' value='Guardar'/>";
 	}
-	function eliminarLibro() {
-		var e = confirm("¿Estas seguro? Si procede el libro se eliminara");
-		if (e == true) {
-			alert("Has eliminado el libro");
-		} else {
-			window.location = "listar.jsp";
+	function conrirmarEliminarLibro(url) {
+		if(confirm('¿Tas seguro?')){
+			window.location=url;
+		}else{
+			return false;
 		}
 	}
 	function modificarLibro() {
@@ -101,13 +100,18 @@
 					Libro libro;
 					while (i.hasNext()) {
 						libro = i.next();
+						/* if(libro.estaPrestado()){
+							out.print("<tr class='table-danger'>...</tr>");
+						}else{
+							out.print("<tr class='table-success'>...</tr>");
+						}*/
 				%>
 				<tr>
 					<td><%=libro.getTitulo()%></td>
 					<td><%=libro.getAutor()%></td>
 					<td style="width: 100px;"><a
 						href="fichalibro.jsp?id=<%=libro.getId()%>">Ver</a></td>
-					<td style="width: 100px;"><a onclick="eliminarLibro()">Eliminar</a></td>
+					<td style="width: 100px;"><a href="eliminarLibro.jsp?id=<%=libro.getId()%>" onclick="return confirmarEliminarLibro()">Eliminar</a></td>
 					<td style="width: 100px"><a onclick="modificarLibro()">Editar</a></td>
 				</tr>
 				<%

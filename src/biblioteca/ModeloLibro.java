@@ -43,7 +43,7 @@ public class ModeloLibro extends Conector {
 		try {
 			PreparedStatement pst = conexion.prepareStatement("DELETE FROM libros WHERE id=?");
 			pst.setInt(1, id);
-			pst.execute();
+			pst.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -67,7 +67,7 @@ public class ModeloLibro extends Conector {
 	public void update(Libro libro) {
 		try {
 			PreparedStatement pst = super.conexion
-					.prepareStatement("UPDATE libros SET titulo = ? autor = ? WHERE id = ?");
+					.prepareStatement("UPDATE libros SET titulo = ?, autor = ? WHERE id = ?");
 			pst.setString(2, libro.getAutor());
 			pst.setString(1, libro.getTitulo());
 			pst.setInt(3, libro.getId());
