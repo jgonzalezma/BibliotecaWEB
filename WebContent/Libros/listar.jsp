@@ -36,11 +36,7 @@
 		libro.setTitulo(titulo);
 		libro.setAutor(autor);
 		libro.setId(id);
-		if (modeloLibro.existe(libro)) {
-			modeloLibro.update(libro);
-		} else {
-
-		}
+		modeloLibro.update(libro);
 	}
 	//Esta accion es de eliminar
 	if (request.getParameter("id") != null) {
@@ -86,6 +82,7 @@
 				<tr>
 					<th scope="col">Libro</th>
 					<th scope="col">Autor</th>
+					<th scope="col">Disponibilidad</th>
 					<th style="text-align: center;" scope="col">Ver</th>
 					<th scope="col"></th>
 					<th scope="col"></th>
@@ -100,6 +97,7 @@
 			<tr class="fila">
 				<td><%=libro.getTitulo()%></td>
 				<td><%=libro.getAutor()%></td>
+				<td></td>
 				<td style="width: 100px; text-align: center;"><a
 					href="fichalibro.jsp?id=<%=libro.getId()%>">Ver</a></td>
 				<td style="width: 100px;"><a
@@ -114,6 +112,7 @@
 			<tr>
 				<td id="titulo"></td>
 				<td id="autor"></td>
+				<td></td>
 				<td id="boton" style="text-align: center;"><input type="button"
 					value="Crear" onclick="crearLibro()"></td>
 				<td id="id"></td>

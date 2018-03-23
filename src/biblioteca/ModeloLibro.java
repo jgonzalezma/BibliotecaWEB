@@ -67,7 +67,7 @@ public class ModeloLibro extends Conector {
 	public void update(Libro libro) {
 		try {
 			PreparedStatement pst = super.conexion
-					.prepareStatement("UPDATE libros SET titulo = ? autor = ? WHERE id = ?");
+					.prepareStatement("UPDATE libros SET titulo = ?, autor = ? WHERE id = ?");
 			pst.setString(2, libro.getAutor());
 			pst.setString(1, libro.getTitulo());
 			pst.setInt(3, libro.getId());

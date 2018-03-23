@@ -42,7 +42,7 @@
 			<thead class="thead-dark">
 				<tr>
 					<th scope="col">Usuario</th>
-					<th scope="col">Prestamo</th>
+					<th scope="col">Libro</th>
 					<th scope="col">Disponibilidad</th>
 					<th style="text-align: center;" scope="col">Fecha Prestamo</th>
 					<th style="text-align: center;" scope="col">Fecha Entrega</th>
