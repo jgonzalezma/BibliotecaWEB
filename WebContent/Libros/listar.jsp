@@ -55,8 +55,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Listar</title>
 <jsp:include page="../include/scripts.html"></jsp:include>
-<link rel="stylesheet" type="text/css"
-	href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+
+<link rel="stylesheet" type="text/css" href="../css/tables.css">
 
 <script type="text/javascript" charset="utf8"
 	src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
