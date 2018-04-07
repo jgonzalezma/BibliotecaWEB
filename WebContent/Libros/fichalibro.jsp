@@ -22,7 +22,7 @@
 </head>
 <body>
 	<jsp:include page="../include/menu.html"></jsp:include>
-	<div id="portada"><img src="../images/" width="300px" height="450px"></div>
+	<div id="portada"><img src="../images/<%=libro.getImagen() %>" width="300px" height="450px"></div>
 	<div id="info">
 		<div id="titulo"><%=libro.getTitulo()%></div>
 		<div id="otro">
@@ -34,6 +34,5 @@
 				<%=libro.getCategoria()%></p>
 		</div>
 	</div>
-	<div id="desc"></div>
 </body>
 </html>

@@ -87,9 +87,11 @@
 			<thead class="thead-dark">
 				<tr>
 					<th scope="col">Libro</th>
+					<th scope="col"></th>
 					<th scope="col">Autor</th>
 					<th scope="col">Categoria</th>
 					<th scope="col">Disponibilidad</th>
+
 					<th style="text-align: center;" scope="col">Ver</th>
 					<th scope="col"></th>
 					<th scope="col"></th>
@@ -103,6 +105,19 @@
 			%>
 			<tr class="fila">
 				<td><%=libro.getTitulo()%></td>
+				<td>
+					<div class="dropdown">
+						<img src="../images/<%=libro.getImagen()%>"
+							alt="<%=libro.getTitulo()%>" width="50" height="50">
+						<div class="dropdown-content">
+							<img src="../images/<%=libro.getImagen()%>"
+								alt="<%=libro.getTitulo()%>" width="220" height="350">
+							<div class="desc">
+								Titulo :
+								<%=libro.getTitulo()%></div>
+						</div>
+					</div>
+				</td>
 				<td><%=libro.getAutor()%></td>
 				<td><%=libro.getCategoria()%></td>
 				<td></td>
@@ -121,6 +136,7 @@
 				<td id="titulo"></td>
 				<td id="autor"></td>
 				<td id="categoria"></td>
+				<td></td>
 				<td></td>
 				<td id="boton" style="text-align: center;"><input type="button"
 					value="Crear" onclick="crearLibro()"></td>

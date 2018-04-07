@@ -15,9 +15,13 @@ public class ModeloLibro extends Conector {
 			Statement st = conexion.createStatement();
 			ResultSet rs = st.executeQuery("SELECT * FROM libros");
 			while (rs.next()) {
-				Libro l = new Libro(rs.getInt("id"), rs.getString("autor"), rs.getString("titulo"),
-						rs.getString("categoria"));
-				listaLibros.add(l);
+				Libro libro = new Libro();
+				libro.setId(rs.getInt("id"));
+				libro.setAutor(rs.getString("autor"));
+				libro.setTitulo(rs.getString("titulo"));
+				libro.setCategoria(rs.getString("categoria"));
+				libro.setImagen(rs.getString("imagen"));
+				listaLibros.add(libro);
 			}
 		} catch (SQLException e) {
 			// TODO: handle exception
@@ -35,6 +39,7 @@ public class ModeloLibro extends Conector {
 			libro.setAutor(rs.getString("autor"));
 			libro.setTitulo(rs.getString("titulo"));
 			libro.setCategoria(rs.getString("categoria"));
+			libro.setImagen(rs.getString("imagen"));
 		} catch (SQLException e) {
 			// TODO: handle exception
 		}
@@ -58,8 +63,12 @@ public class ModeloLibro extends Conector {
 			Statement st = conexion.createStatement();
 			ResultSet rs = st.executeQuery("SELECT * FROM libros WHERE titulo= ('" + titulo + "')");
 			rs.next();
-			libro = new Libro(rs.getInt("id"), rs.getString("autor"), rs.getString("titulo"),
-					rs.getString("categoria"));
+			libro = new Libro();
+			libro.setId(rs.getInt("id"));
+			libro.setAutor(rs.getString("autor"));
+			libro.setTitulo(rs.getString("titulo"));
+			libro.setCategoria(rs.getString("categoria"));
+			libro.setImagen(rs.getString("imagen"));
 			// devolver lista
 
 		} catch (SQLException e) {
@@ -75,6 +84,23 @@ public class ModeloLibro extends Conector {
 			pst.setString(1, libro.getTitulo());
 			pst.setString(3, libro.getCategoria());
 			pst.setInt(4, libro.getId());
+			pst.execute();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void updateConImagen(Libro libro) {
+		try {
+			PreparedStatement pst = super.conexion.prepareStatement(
+					"UPDATE libros SET titulo = ?, autor = ?, categoria = ?, imagen = ? WHERE id = ?");
+			pst.setString(2, libro.getAutor());
+			pst.setString(1, libro.getTitulo());
+			pst.setString(3, libro.getCategoria());
+			pst.setString(4, libro.getImagen());
+			pst.setInt(5, libro.getId());
 			pst.execute();
 
 		} catch (SQLException e) {
