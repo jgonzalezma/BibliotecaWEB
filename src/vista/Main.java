@@ -6,9 +6,9 @@ public class Main {
 		UsuarioVista vista = new UsuarioVista();
 		//vista.menuUsuario();
 		LibroVista vista2 = new LibroVista();
-		vista2.menuLibro();
+		//vista2.menuLibro();
 		PrestamosVista vista3 = new PrestamosVista();
-		//vista3.menuPrestamo();
+		vista3.menuPrestamo();
 	}
 
 }

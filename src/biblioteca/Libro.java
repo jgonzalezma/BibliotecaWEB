@@ -6,16 +6,19 @@ public class Libro {
 	private int id;
 	private String autor;
 	private String titulo;
+	private String categoria;
+	private String imagen;
 	private ArrayList<Prestamo> prestamos;
 
 	public Libro() {
 
 	}
 
-	public Libro(int id, String autor, String titulo) {
+	public Libro(int id, String autor, String titulo, String categoria) {
 		this.id = id;
 		this.autor = autor;
 		this.titulo = titulo;
+		this.categoria = categoria;
 	}
 
 	public int getId() {
@@ -48,6 +51,14 @@ public class Libro {
 
 	public void setPrestamos(ArrayList<Prestamo> prestamos) {
 		this.prestamos = prestamos;
+	}
+
+	public String getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
 	}
 
 }

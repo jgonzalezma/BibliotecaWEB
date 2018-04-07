@@ -15,7 +15,8 @@ public class ModeloLibro extends Conector {
 			Statement st = conexion.createStatement();
 			ResultSet rs = st.executeQuery("SELECT * FROM libros");
 			while (rs.next()) {
-				Libro l = new Libro(rs.getInt("id"), rs.getString("autor"), rs.getString("titulo"));
+				Libro l = new Libro(rs.getInt("id"), rs.getString("autor"), rs.getString("titulo"),
+						rs.getString("categoria"));
 				listaLibros.add(l);
 			}
 		} catch (SQLException e) {
@@ -33,6 +34,7 @@ public class ModeloLibro extends Conector {
 			libro.setId(rs.getInt("id"));
 			libro.setAutor(rs.getString("autor"));
 			libro.setTitulo(rs.getString("titulo"));
+			libro.setCategoria(rs.getString("categoria"));
 		} catch (SQLException e) {
 			// TODO: handle exception
 		}
@@ -56,7 +58,8 @@ public class ModeloLibro extends Conector {
 			Statement st = conexion.createStatement();
 			ResultSet rs = st.executeQuery("SELECT * FROM libros WHERE titulo= ('" + titulo + "')");
 			rs.next();
-			libro = new Libro(rs.getInt("id"), rs.getString("autor"), rs.getString("titulo"));
+			libro = new Libro(rs.getInt("id"), rs.getString("autor"), rs.getString("titulo"),
+					rs.getString("categoria"));
 			// devolver lista
 
 		} catch (SQLException e) {
@@ -67,10 +70,11 @@ public class ModeloLibro extends Conector {
 	public void update(Libro libro) {
 		try {
 			PreparedStatement pst = super.conexion
-					.prepareStatement("UPDATE libros SET titulo = ?, autor = ? WHERE id = ?");
+					.prepareStatement("UPDATE libros SET titulo = ?, autor = ?, categoria = ? WHERE id = ?");
 			pst.setString(2, libro.getAutor());
 			pst.setString(1, libro.getTitulo());
-			pst.setInt(3, libro.getId());
+			pst.setString(3, libro.getCategoria());
+			pst.setInt(4, libro.getId());
 			pst.execute();
 
 		} catch (SQLException e) {
@@ -81,9 +85,11 @@ public class ModeloLibro extends Conector {
 
 	public void insert(Libro libro) {
 		try {
-			PreparedStatement pst = super.conexion.prepareStatement("INSERT INTO libros (autor, titulo) values (?,?)");
+			PreparedStatement pst = super.conexion
+					.prepareStatement("INSERT INTO libros (autor, titulo, categoria) values (?,?,?)");
 			pst.setString(1, libro.getAutor());
 			pst.setString(2, libro.getTitulo());
+			pst.setString(3, libro.getCategoria());
 			pst.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();

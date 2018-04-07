@@ -12,8 +12,10 @@
 			Libro libro = new Libro();
 			String titulo = request.getParameter("titulo");
 			String autor = request.getParameter("autor");
+			String categoria = request.getParameter("categoria");
 			libro.setTitulo(titulo);
 			libro.setAutor(autor);
+			libro.setCategoria(categoria);
 			if (!modeloLibro.existe(libro)) {
 				modeloLibro.insert(libro);
 			} else {
@@ -32,9 +34,11 @@
 		Libro libro = new Libro();
 		String titulo = request.getParameter("mtitulo");
 		String autor = request.getParameter("mautor");
+		String categoria = request.getParameter("mcategoria");
 		int id = Integer.parseInt(request.getParameter("mid"));
 		libro.setTitulo(titulo);
 		libro.setAutor(autor);
+		libro.setCategoria(categoria);
 		libro.setId(id);
 		modeloLibro.update(libro);
 	}
@@ -63,13 +67,15 @@
 	function crearLibro() {
 		document.getElementById("titulo").innerHTML = "<input type=text name='titulo' placeholder='Inserte Titulo'/>";
 		document.getElementById("autor").innerHTML = "<input type=text name='autor' placeholder='Inserte Autor'/>";
+		document.getElementById("categoria").innerHTML = "<select name='categoria'><option value='Aventura' selected>Aventura</option><option value='Terror'>Terror</option><option value='Thriller'>Thriller</option><option value='Fantasia'>Fantasia</option><option value='Scify'>Scify</option><option value='Romance'>Romance</option><option value='Historia'>Historia</option><option value='Biografia'>Biografia</option><option value='Educativo'>Educativo</option></select>";
 		document.getElementById("boton").innerHTML = "<input type=submit name='guardar' value='Guardar'/>";
 	}
 	function modificarLibro(id, titulo, autor) {
 		document.getElementById("titulo").innerHTML = "<input type=text name='mtitulo' placeholder='"+titulo+"'/>";
 		document.getElementById("autor").innerHTML = "<input type=text name='mautor' placeholder='"+autor+"'/>";
-		document.getElementById("id").innerHTML = "<input id='mid' name='mid' type='hidden' value="+id+">"
-		document.getElementById("boton").innerHTML = "<input type=submit name='modificar' value='Modificar'/>";
+		document.getElementById("categoria").innerHTML = "<select name='mcategoria'><option value='Aventura' selected>Aventura</option><option value='Terror'>Terror</option><option value='Thriller'>Thriller</option><option value='Fantasia'>Fantasia</option><option value='Scify'>Scify</option><option value='Romance'>Romance</option><option value='Historia'>Historia</option><option value='Biografia'>Biografia</option><option value='Educativo'>Educativo</option></select>";
+		document.getElementById("id").innerHTML = "<input id='mid' name='mid' type='hidden' value="+id+">";
+		document.getElementById("mboton").innerHTML = "<input type=submit name='modificar' value='Modificar'/>";
 	}
 </script>
 </head>
@@ -82,6 +88,7 @@
 				<tr>
 					<th scope="col">Libro</th>
 					<th scope="col">Autor</th>
+					<th scope="col">Categoria</th>
 					<th scope="col">Disponibilidad</th>
 					<th style="text-align: center;" scope="col">Ver</th>
 					<th scope="col"></th>
@@ -97,6 +104,7 @@
 			<tr class="fila">
 				<td><%=libro.getTitulo()%></td>
 				<td><%=libro.getAutor()%></td>
+				<td><%=libro.getCategoria()%></td>
 				<td></td>
 				<td style="width: 100px; text-align: center;"><a
 					href="fichalibro.jsp?id=<%=libro.getId()%>">Ver</a></td>
@@ -112,11 +120,12 @@
 			<tr>
 				<td id="titulo"></td>
 				<td id="autor"></td>
+				<td id="categoria"></td>
 				<td></td>
 				<td id="boton" style="text-align: center;"><input type="button"
 					value="Crear" onclick="crearLibro()"></td>
 				<td id="id"></td>
-				<td></td>
+				<td id="mboton"></td>
 			</tr>
 
 		</table>

@@ -16,27 +16,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Libro</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<title><%=libro.getTitulo()%></title>
+<jsp:include page="../include/scripts.html"></jsp:include>
+<link rel="stylesheet" type="text/css" href="../css/ficha.css">
 </head>
 <body>
-	<table class="table table-bordered table-striped">
-		<thead class="thead-dark">
-			<tr>
-				<th scope="col">Titulo</th>
-				<th scope="col">Autor</th>
-				<th scope="col"></th>
-			</tr>
-		</thead>
-		<%
-			out.print("<tr><td>" + libro.getTitulo() + "</td><td>" + libro.getAutor() + "</td><td>"
-					+ "<a href='listar.jsp'>Listar libros</a>" + "</td></tr>");
-		%>
-
-	</table>
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<jsp:include page="../include/menu.html"></jsp:include>
+	<div id="portada"><img src="../images/" width="300px" height="450px"></div>
+	<div id="info">
+		<div id="titulo"><%=libro.getTitulo()%></div>
+		<div id="otro">
+			<p>
+				Autor del libro :
+				<%=libro.getAutor()%></p>
+			<p>
+				Categoria :
+				<%=libro.getCategoria()%></p>
+		</div>
+	</div>
+	<div id="desc"></div>
 </body>
 </html>
