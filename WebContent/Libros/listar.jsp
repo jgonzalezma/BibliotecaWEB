@@ -6,6 +6,12 @@
 <%
 	ModeloLibro modeloLibro = new ModeloLibro();
 	ModeloPrestamo modeloPrestamo = new ModeloPrestamo();
+	
+	//Ver si esta loggeado
+	Object objeto = session.getAttribute("iniciado");
+	if (objeto == null) {
+		response.sendRedirect("../index.jsp");
+	}
 	//Esta accion es de guardar
 	if (request.getParameter("guardar") != null) {
 		if (request.getParameter("titulo") != "" && request.getParameter("autor") != "") {
@@ -122,7 +128,7 @@
 				<td><%=libro.getCategoria()%></td>
 				<%
 					String entregado;
-						if (!modeloPrestamo.estaDisponible(libro)) {
+						if (modeloPrestamo.estaDisponible(libro)) {
 							entregado = "check";
 						} else {
 							entregado = "cross";

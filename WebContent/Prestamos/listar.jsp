@@ -6,6 +6,12 @@
 <%
 	ModeloPrestamo modeloPrestamo = new ModeloPrestamo();
 	ArrayList<Prestamo> prestamos = modeloPrestamo.selectAll();
+
+	//Ver si esta loggeado
+	Object objeto = session.getAttribute("iniciado");
+	if (objeto == null) {
+		response.sendRedirect("../index.jsp");
+	}
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

@@ -102,16 +102,16 @@ public class ModeloPrestamo extends Conector {
 	}
 
 	public boolean estaDisponible(Libro libro) {
-
+		boolean disponible = true;
 		try {
 			PreparedStatement pst = super.conexion
-					.prepareStatement("select * from prestamos where id_libro=? and entregado=0");
+					.prepareStatement("select * from prestamo where id_libro= ? and entregado=0");
 			pst.setInt(1, libro.getId());
 			ResultSet rs = pst.executeQuery();
 			if (rs.next()) {
-				return false;
+				disponible = false;
 			} else {
-				return true;
+				disponible = true;
 			}
 
 		} catch (SQLException e) {
@@ -119,7 +119,7 @@ public class ModeloPrestamo extends Conector {
 			e.printStackTrace();
 		}
 		;
-		return false;
+		return disponible;
 
 	}
 }

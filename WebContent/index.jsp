@@ -27,13 +27,13 @@
 		</ul>
 	</div>
 	</nav>
-	<form action="login.jsp" method="post">
+	<form action="Usuarios/login.jsp" method="post">
 		<div id="inicio">
 			<div id="usuario">
 				<p>DNI</p>
 				<input type=text name='dni' />
 				<p>Contraseña</p>
-				<input type=password name='contraseña' />
+				<input type=password name='password' />
 			</div>
 			<div id="iniciar">
 				<input type=submit name='iniciar' value='Iniciar Sesion' /> <br>
