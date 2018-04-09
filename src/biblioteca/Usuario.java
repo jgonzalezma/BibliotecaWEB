@@ -10,19 +10,24 @@ public class Usuario {
 	private int edad;
 	private String dni;
 	private Date fechaNacimineto;
+	private String password;
+	private String rol;
 	private ArrayList<Prestamo> prestamos;
 
 	public Usuario() {
 
 	}
 
-	Usuario(int id, String nombre, String apellido, int edad, String dni, Date fechaNacimiento) {
+	Usuario(int id, String nombre, String apellido, int edad, String dni, Date fechaNacimiento, String password,
+			String rol) {
 		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.edad = edad;
 		this.dni = dni;
 		this.fechaNacimineto = fechaNacimiento;
+		this.password = password;
+		this.rol = rol;
 	}
 
 	public int getId() {
@@ -79,6 +84,22 @@ public class Usuario {
 
 	public void setPrestamos(ArrayList<Prestamo> prestamos) {
 		this.prestamos = prestamos;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getRol() {
+		return rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
 	}
 
 }

@@ -5,7 +5,7 @@
 <%@ page import="java.util.Iterator"%>
 <%
 	ModeloLibro modeloLibro = new ModeloLibro();
-
+	ModeloPrestamo modeloPrestamo = new ModeloPrestamo();
 	//Esta accion es de guardar
 	if (request.getParameter("guardar") != null) {
 		if (request.getParameter("titulo") != "" && request.getParameter("autor") != "") {
@@ -120,7 +120,16 @@
 				</td>
 				<td><%=libro.getAutor()%></td>
 				<td><%=libro.getCategoria()%></td>
-				<td></td>
+				<%
+					String entregado;
+						if (!modeloPrestamo.estaDisponible(libro)) {
+							entregado = "check";
+						} else {
+							entregado = "cross";
+						}
+				%>
+				<td><img style="width: 30px; height: 30px; margin-left: 40px;"
+					src="../images/<%=entregado%>.png"></td>
 				<td style="width: 100px; text-align: center;"><a
 					href="fichalibro.jsp?id=<%=libro.getId()%>">Ver</a></td>
 				<td style="width: 100px;"><a
@@ -134,9 +143,9 @@
 			%>
 			<tr>
 				<td id="titulo"></td>
+				<td></td>
 				<td id="autor"></td>
 				<td id="categoria"></td>
-				<td></td>
 				<td></td>
 				<td id="boton" style="text-align: center;"><input type="button"
 					value="Crear" onclick="crearLibro()"></td>
