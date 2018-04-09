@@ -7,10 +7,10 @@
 	out.print("loggout realizado");
 
 	//Ver si esta loggeado
-	Object objeto = session.getAttribute("iniciado");
-	if (objeto == null) {
-		response.sendRedirect("biblioteca.jsp");
-	}
+	//Object objeto = session.getAttribute("iniciado");
+	//if (objeto == null) {
+	//	response.sendRedirect("index.jsp");
+	//}
 %>
 <html>
 <head>
@@ -33,7 +33,7 @@
 		<ul id="menu">
 			<li><a href="#">Inicio</a></li>
 			<li><a href="Libros/listar.jsp">Libros</a></li>
-			<li><a href="#">Usuarios</a></li>
+			<li><a href="Usuarios/listar.jsp">Usuarios</a></li>
 			<li><a href="Prestamos/listar.jsp">Prestamos</a></li>
 		</ul>
 	</div>
