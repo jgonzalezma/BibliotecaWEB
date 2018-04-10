@@ -8,7 +8,7 @@
 	ModeloPrestamo modeloPrestamo = new ModeloPrestamo();
 	
 	//Ver si esta loggeado
-	Object objeto = session.getAttribute("iniciado");
+	Object objeto = session.getAttribute("dni");
 	if (objeto == null) {
 		response.sendRedirect("../index.jsp");
 	}

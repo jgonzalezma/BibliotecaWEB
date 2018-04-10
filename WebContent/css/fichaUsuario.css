@@ -1,0 +1,30 @@
+@charset "ISO-8859-1";
+
+#imagenPerfil {
+	width: 300px;
+	height: 450px; position : absolute;
+	top: 120px;
+	left: 120px;
+	position: absolute;
+}
+
+#info {
+	width: 1000px;
+	height: 200px;
+	position: absolute;
+	top: 120px;
+	left: 450px;
+}
+
+#nombre {
+	width: 1000px;
+	height: 100px;
+	text-align: center;
+	color: #979797;
+	font-size: 40px;
+}
+
+#otro {
+	width: 1000px;
+	height: 100px;
+}

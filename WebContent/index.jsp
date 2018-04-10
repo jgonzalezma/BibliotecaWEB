@@ -2,9 +2,8 @@
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
-
 	//Ver si esta loggeado
-	Object objeto = session.getAttribute("iniciado");
+	Object objeto = session.getAttribute("dni");
 	if (objeto != null) {
 		response.sendRedirect("biblioteca.jsp");
 	}
