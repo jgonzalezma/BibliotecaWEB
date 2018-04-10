@@ -3,14 +3,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
 	//cortar luego de crear ficha usuario
-	session.removeAttribute("iniciado");
-	out.print("loggout realizado");
+	//session.removeAttribute("iniciado");
+	//out.print("loggout realizado");
 
 	//Ver si esta loggeado
-	//Object objeto = session.getAttribute("iniciado");
-	//if (objeto == null) {
-	//	response.sendRedirect("index.jsp");
-	//}
+	Object objeto = session.getAttribute("iniciado");
+	if (objeto != null) {
+		response.sendRedirect("biblioteca.jsp");
+	}
 %>
 <html>
 <head>
