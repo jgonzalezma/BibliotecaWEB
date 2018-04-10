@@ -21,7 +21,7 @@ public class ModeloUsuario extends Conector {
 				// Recorrer el resultset y rellenar el arraylist
 				Usuario u = new Usuario(rs.getInt("id"), rs.getString("nombre"), rs.getString("apellido"),
 						rs.getInt("edad"), rs.getString("dni"), rs.getDate("fechaNacimiento"), rs.getString("password"),
-						rs.getString("rol"));
+						rs.getString("rol"), rs.getString("imagen"));
 				listaUsuarios.add(u);
 			}
 
@@ -49,6 +49,7 @@ public class ModeloUsuario extends Conector {
 				usuario.setDni(rs.getString("dni"));
 				usuario.setPassword(rs.getString("password"));
 				usuario.setRol(rs.getString("rol"));
+				usuario.setImagen(rs.getString("imagen"));
 				usuario.setFechaNacimineto(rs.getDate("FechaNacimiento"));
 			}
 		} catch (SQLException e) {
@@ -81,7 +82,7 @@ public class ModeloUsuario extends Conector {
 				// Recorrer el resultset y rellenar el arraylist
 				Usuario u = new Usuario(rs.getInt("id"), rs.getString("nombre"), rs.getString("apellido"),
 						rs.getInt("edad"), rs.getString("dni"), rs.getDate("fechaNacimiento"), rs.getString("password"),
-						rs.getString("rol"));
+						rs.getString("rol"), rs.getString("imagen"));
 				listaUsuarios.add(u);
 			}
 			// devolver lista
@@ -101,7 +102,8 @@ public class ModeloUsuario extends Conector {
 			ResultSet rs = st.executeQuery("SELECT * FROM usuarios WHERE dni =('" + dni + "')");
 			rs.next();
 			usuario = new Usuario(rs.getInt("id"), rs.getString("nombre"), rs.getString("apellido"), rs.getInt("edad"),
-					rs.getString("dni"), rs.getDate("fechaNacimiento"), rs.getString("password"), rs.getString("rol"));
+					rs.getString("dni"), rs.getDate("fechaNacimiento"), rs.getString("password"), rs.getString("rol"),
+					rs.getString("imagen"));
 		} catch (SQLException e) {
 			System.out.println("Error, prueba otra vez");
 		}
@@ -119,7 +121,7 @@ public class ModeloUsuario extends Conector {
 				// Recorrer el resultset y rellenar el arraylist
 				Usuario u = new Usuario(rs.getInt("id"), rs.getString("nombre"), rs.getString("apellido"),
 						rs.getInt("edad"), rs.getString("dni"), rs.getDate("fechaNacimiento"), rs.getString("password"),
-						rs.getString("rol"));
+						rs.getString("rol"), rs.getString("imagen"));
 				listaUsuarios.add(u);
 			}
 
@@ -141,7 +143,7 @@ public class ModeloUsuario extends Conector {
 				// Recorrer el resultset y rellenar el arraylist
 				Usuario u = new Usuario(rs.getInt("id"), rs.getString("nombre"), rs.getString("apellido"),
 						rs.getInt("edad"), rs.getString("dni"), rs.getDate("fechaNacimiento"), rs.getString("password"),
-						rs.getString("rol"));
+						rs.getString("rol"), rs.getString("imagen"));
 				listaUsuarios.add(u);
 			}
 
@@ -155,7 +157,7 @@ public class ModeloUsuario extends Conector {
 	public void update(Usuario usuario) {
 		try {
 			PreparedStatement pst = super.conexion.prepareStatement(
-					"UPDATE usuarios SET nombre = ? apellido = ?, edad = ?, dni = ?, fechaNacimiento = ?, password = ?, rol = ? WHERE id = ?");
+					"UPDATE usuarios SET nombre = ? apellido = ?, edad = ?, dni = ?, fechaNacimiento = ?, password = ?, rol = ?, imagen = ? WHERE id = ?");
 			pst.setString(1, usuario.getNombre());
 			pst.setString(2, usuario.getApellido());
 			pst.setInt(3, usuario.getEdad());
@@ -163,7 +165,8 @@ public class ModeloUsuario extends Conector {
 			pst.setDate(5, dateToSql(usuario.getFechaNacimineto()));
 			pst.setString(6, usuario.getPassword());
 			pst.setString(7, usuario.getRol());
-			pst.setInt(8, usuario.getId());
+			pst.setString(8, usuario.getImagen());
+			pst.setInt(9, usuario.getId());
 			pst.execute();
 
 		} catch (SQLException e) {
@@ -183,6 +186,7 @@ public class ModeloUsuario extends Conector {
 			pst.setDate(5, dateToSql(usuario.getFechaNacimineto()));
 			pst.setString(6, usuario.getPassword());
 			pst.setString(7, usuario.getRol());
+			pst.setString(8, usuario.getImagen());
 			pst.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();

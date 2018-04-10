@@ -1,13 +1,57 @@
 @CHARSET "ISO-8859-1";
 
-.hover07 figure img {
+body {
+	color: #333;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	background-image: url(../images/background.jpg);
+}
+
+figure img {
 	-webkit-filter: blur(3px);
 	filter: blur(3px);
 	-webkit-transition: .3s ease-in-out;
 	transition: .3s ease-in-out;
 }
 
-.hover07 figure:hover img {
+figure:hover img {
 	-webkit-filter: blur(0);
 	filter: blur(0);
+}
+
+#seleccionador {
+	width: 1000px;
+	height: 700px;
+	margin: 150px auto;
+	
+}
+
+#img1 {
+	width: 450px;
+	height: 300px;
+	float: left;
+	border: 1px solid grey;
+}
+
+#img2 {
+	width: 450px;
+	height: 300px;
+	float: right;
+	border: 1px solid grey;
+}
+
+#img3 {
+	width: 450px;
+	height: 300px;
+	margin-top: 96px;
+	float: left;
+	border: 1px solid grey;
+}
+
+#img4 {
+	width: 450px;
+	height: 300px;
+	margin-top: 96px;
+	float: right;
+	border: 1px solid grey;
 }

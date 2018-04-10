@@ -9,7 +9,7 @@
 	Usuario usuario = modeloUsuario.selectPorDni(dni);
 	if (usuario != null && password.equals(usuario.getPassword())) {
 		session.setAttribute("iniciado", "si");
-		response.sendRedirect("../Libros/listar.jsp");
+		response.sendRedirect("../biblioteca.jsp");
 	} else {
 		response.sendRedirect("../index.jsp");
 	}

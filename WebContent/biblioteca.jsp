@@ -10,7 +10,23 @@
 <link rel="stylesheet" type="text/css" href="css/seleccionador.css">
 </head>
 <body>
-	<jsp:include page="include/menu.html"></jsp:include>
-	<div id="seleccionador"></div>
+	<div id="seleccionador">
+		<div id="img1">
+			<figure> <a href="Libros/listar.jsp"><img
+				src="images/iconos/libros.png" width="450" height="300" /></a></figure>
+		</div>
+		<div id="img2">
+			<figure> <a href="Usuarios/fichaUsuario.jsp"> <img
+				src="images/iconos/usuario.png" width="450" height="300" /></a></figure>
+		</div>
+		<div id="img3">
+			<figure> <a href="Prestamos/listar.jsp"><img
+				src="images/iconos/prestamo.png" width="450" height="300" /></a></figure>
+		</div>
+		<div id="img4">
+			<figure> <a href="Usuarios/logout.jsp"><img
+				src="images/iconos/logout.png" width="450" height="300" /></a></figure>
+		</div>
+	</div>
 </body>
 </html>
