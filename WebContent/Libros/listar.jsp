@@ -7,10 +7,10 @@
 	ModeloLibro modeloLibro = new ModeloLibro();
 	ModeloPrestamo modeloPrestamo = new ModeloPrestamo();
 	
-		//Ver si esta loggeado
-		Object objeto = session.getAttribute("iniciado");
+	//Ver si esta loggeado
+		Object objeto = session.getAttribute("dni");
 		if (objeto == null) {
-			response.sendRedirect("listar.jsp");
+			response.sendRedirect("login_form.jsp");
 		}
 	
 	
@@ -81,6 +81,7 @@
 			<li><a href="#">Libros</a></li>
 			<li><a href="../Usuarios/listarUsuarios.jsp">Usuarios</a></li>
 			<li><a href="#">Prestamos</a></li>
+			<li><a href="logout.jsp">Logout</a></li>
 		</ul>
 	</div>
 	</nav>
