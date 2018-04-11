@@ -3,9 +3,7 @@
 <%@ page import="biblioteca.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
-	ModeloUsuario modeloUsuario = new ModeloUsuario();
-	String dni = session.getAttribute("dni").toString();
-	Usuario usuario = modeloUsuario.selectPorDni(dni);
+	Usuario usuario = (Usuario) session.getAttribute("usuario");
 %>
 <html>
 <head>

@@ -1,5 +1,6 @@
 package biblioteca;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class Prestamo {
@@ -67,6 +68,16 @@ public class Prestamo {
 
 	public void setEntregado(boolean entregado) {
 		this.entregado = entregado;
+	}
+
+	public Date fechaLimite(Date fechaPrestamo) {
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(fechaPrestamo);
+		cal.add(Calendar.DATE, 21);
+		Date fechaLimite = new Date();
+		fechaLimite = cal.getTime();
+		return fechaLimite;
+
 	}
 
 }

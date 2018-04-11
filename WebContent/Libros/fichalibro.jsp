@@ -5,12 +5,13 @@
 <%@ page import="java.util.Iterator"%>
 <%
 	ModeloLibro modeloLibro = new ModeloLibro();
+	ModeloPrestamo modeloPrestamo = new ModeloPrestamo();
 	String ide = request.getParameter("id");
 	int id = Integer.parseInt(ide);
 	Libro libro = modeloLibro.selectId(id);
-
-	//si se ha dado un error
-	//response.sendRedirect("listar.jsp?error=faltaid");
+	session.setAttribute("libro", libro);
+	Usuario usuario = (Usuario) session.getAttribute("usuario");
+	Prestamo prestamo = modeloPrestamo.selectPorIds(usuario.getId(), libro.getId());
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -35,6 +36,24 @@
 			<p>
 				Categoria :
 				<%=libro.getCategoria()%></p>
+			<br>
+			<%
+				if (modeloPrestamo.estaDisponible(libro)) {
+			%>
+
+			<form action="../Prestamos/prestamo.jsp" method="post">
+				<input type="submit" name="prestar" value="Tomar Prestado">
+			</form>
+			<%
+				} else if (!modeloPrestamo.estaDisponible(libro) && prestamo.getId() != 0 && !prestamo.isEntregado()) {
+			%>
+			<form action="../Prestamos/entregar.jsp" method="post">
+				<input type="submit" name="entregar" value="Entregar Libro">
+			</form>
+			<%
+				}
+			%>
+
 		</div>
 	</div>
 </body>

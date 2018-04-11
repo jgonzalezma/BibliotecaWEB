@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class ModeloPrestamo extends Conector {
@@ -85,7 +86,6 @@ public class ModeloPrestamo extends Conector {
 			prestamo.setFechaPrestamo(rs.getDate("fecha_prestamo"));
 			prestamo.setFechaLimite(rs.getDate("fecha_limite"));
 			prestamo.setEntregado(rs.getBoolean("entregado"));
-			prestamo = new Prestamo();
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

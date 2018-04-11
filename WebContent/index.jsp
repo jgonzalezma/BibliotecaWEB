@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
 	//Ver si esta loggeado
-	Object objeto = session.getAttribute("dni");
+	Object objeto = session.getAttribute("usuario");
 	if (objeto != null) {
 		response.sendRedirect("biblioteca.jsp");
 	}
@@ -23,17 +23,6 @@
 <title>Menu Biblioteca</title>
 </head>
 <body>
-	<nav role="navigation">
-	<div id="menuToggle">
-		<input type="checkbox" /> <span></span> <span></span> <span></span>
-		<ul id="menu">
-			<li><a href="#">Inicio</a></li>
-			<li><a href="Libros/listar.jsp">Libros</a></li>
-			<li><a href="Usuarios/listar.jsp">Usuarios</a></li>
-			<li><a href="Prestamos/listar.jsp">Prestamos</a></li>
-		</ul>
-	</div>
-	</nav>
 	<form action="Usuarios/login.jsp" method="post">
 		<div id="inicio">
 			<div id="usuario">
