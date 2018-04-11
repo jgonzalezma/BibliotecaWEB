@@ -11,6 +11,15 @@ public class Usuario {
 	private String dni;
 	private Date fechaNacimineto;
 	private ArrayList<Prestamo> prestamos;
+	private String password;
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	public Usuario() {
 

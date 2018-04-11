@@ -201,4 +201,8 @@ public class ModeloUsuario extends Conector {
 			return false;
 		}
 	}
+	//devuelve el usuario y contraseña
+	public Usuario get(String dni, String constrasena) {
+		return null;
+	}
 }

@@ -61,5 +61,19 @@ public class Libro {
 			}
 		}return false; //el libro ESTA DISPONIBLE porque no esta prestado
 	}
+	public boolean estaDisponible(){
+		Iterator<Prestamo> i = this.prestamos.iterator();
+		Prestamo prestamo;
+		
+		while(i.hasNext()){
+			prestamo = i.next();
+			if(!prestamo.isEntregado()){
+				
+				return false;
+			}
+		}
+		//todos los prestamos estan entregados
+		return true;
+	}
 
 }

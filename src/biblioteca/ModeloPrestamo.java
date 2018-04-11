@@ -100,4 +100,24 @@ public class ModeloPrestamo extends Conector {
 
 		return sqlDate;
 	}
+	public boolean estaDisponible(Libro libro) {
+		boolean disponible = true;
+		try {
+			PreparedStatement pst = super.conexion.prepareStatement("select * from prestamo where id_libro= ? and entregado=0");
+			pst.setInt(1, libro.getId());
+			ResultSet rs = pst.executeQuery();
+			if (rs.next()) {
+				disponible = false;
+			} else {
+				disponible = true;
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		;
+		return disponible;
+
+	}
 }
