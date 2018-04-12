@@ -6,12 +6,13 @@
 <%
 	ModeloLibro modeloLibro = new ModeloLibro();
 	ModeloPrestamo modeloPrestamo = new ModeloPrestamo();
-	
+
 	//Ver si esta loggeado
-	Object objeto = session.getAttribute("usuario");
-	if (objeto == null) {
+	Usuario usuario = (Usuario) session.getAttribute("usuario");
+	if (usuario == null) {
 		response.sendRedirect("../index.jsp");
 	}
+
 	//Esta accion es de guardar
 	if (request.getParameter("guardar") != null) {
 		if (request.getParameter("titulo") != "" && request.getParameter("autor") != "") {
@@ -138,14 +139,28 @@
 					src="../images/<%=entregado%>.png"></td>
 				<td style="width: 100px; text-align: center;"><a
 					href="fichalibro.jsp?id=<%=libro.getId()%>">Ver</a></td>
-				<td style="width: 100px;"><a
-					href="listar.jsp?id=<%=libro.getId()%>">Eliminar</a></td>
-				<td id="modificar" style="width: 100px;"><input type="button"
-					value="Modificar"
-					onclick="modificarLibro(<%=libro.getId()%>,'<%=libro.getTitulo()%>','<%=libro.getAutor()%>')"></td>
+				<td style="width: 100px;">
+					<%
+						if (usuario.getRol() == "admin") {
+					%> <a href="listar.jsp?id=<%=libro.getId()%>">Eliminar </a> <%
+ 	}
+ %>
+				</td>
+				<td id="modificar" style="width: 100px;">
+					<%
+						if (usuario.getRol().equals("admin")) {
+					%> <input type="button" value="Modificar"
+					onclick="modificarLibro(<%=libro.getId()%>,'<%=libro.getTitulo()%>','<%=libro.getAutor()%>')">
+					<%
+						}
+					%>
+				</td>
 			</tr>
 			<%
 				}
+			%>
+			<%
+				if (usuario.getRol().equals("admin")) {
 			%>
 			<tr>
 				<td id="titulo"></td>
@@ -158,7 +173,9 @@
 				<td id="id"></td>
 				<td id="mboton"></td>
 			</tr>
-
+			<%
+				}
+			%>
 		</table>
 	</form>
 
