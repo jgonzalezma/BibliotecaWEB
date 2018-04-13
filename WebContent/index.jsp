@@ -33,7 +33,7 @@
 			</div>
 			<div id="iniciar">
 				<input type=submit name='iniciar' value='Iniciar Sesion' /> <br>
-				<a href="#">Registrarse</a>
+				<a href="Usuarios/registro.jsp">Registrarse</a>
 			</div>
 		</div>
 	</form>
