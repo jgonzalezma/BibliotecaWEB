@@ -30,6 +30,7 @@
 		<div class="row main">
 			<div class="panel-heading"></div>
 			<div class="main-login main-center">
+
 				<form class="form-horizontal" method="post" action="insert.jsp">
 
 					<div class="form-group">

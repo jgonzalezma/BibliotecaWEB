@@ -18,7 +18,10 @@
 	usuario.setFechaNacimineto(fecha);
 	usuario.setDni(dni);
 	usuario.setPassword(password);
-	modeloUsuario.insert(usuario);
-
-	response.sendRedirect("../index.jsp");
+	if (modeloUsuario.selectPorDni(dni) != null) {
+		response.sendRedirect("registro.jsp");
+	} else {
+		modeloUsuario.insert(usuario);
+		response.sendRedirect("../index.jsp");
+	}
 %>
