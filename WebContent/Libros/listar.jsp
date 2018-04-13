@@ -114,6 +114,7 @@
 				%>
 				<tr>
 					<td><%=libro.getTitulo()%></td>
+					
 					<td><%=libro.getAutor()%></td>
 					<%
 					String entregado;
