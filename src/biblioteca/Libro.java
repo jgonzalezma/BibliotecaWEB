@@ -7,6 +7,15 @@ public class Libro {
 	private int id;
 	private String autor;
 	private String titulo;
+	private String imagen;
+	
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
 	private ArrayList<Prestamo> prestamos;
 
 	public Libro() {

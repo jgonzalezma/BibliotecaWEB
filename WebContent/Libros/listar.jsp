@@ -14,38 +14,41 @@
 		}
 	
 	
-	//Esta accion es de guardar
-	if (request.getParameter("guardar") != null) {
-		if (request.getParameter("titulo") != ("") && request.getParameter("autor") != ("")) {
-			Libro libro = new Libro();
-			String titulo = request.getParameter("titulo");
-			String autor = request.getParameter("autor");
-			libro.setTitulo(titulo);
-			libro.setAutor(autor);
-			if (!modeloLibro.existe(libro)) {
-				modeloLibro.insert(libro);
+		//Esta accion es de guardar
+		if (request.getParameter("guardar") != null) {
+			if (request.getParameter("titulo") != "" && request.getParameter("autor") != "") {
+				Libro libro = new Libro();
+				String titulo = request.getParameter("titulo");
+				String autor = request.getParameter("autor");
+				libro.setTitulo(titulo);
+				libro.setAutor(autor);
+				if (!modeloLibro.existe(libro)) {
+					modeloLibro.insert(libro);
+				} else {
+					out.print(
+							"<p style='text-align: center; font-size: 30px; color:red;'>El libro ya existe</p>");
+				}
 			} else {
-				out.print("El libro ya existe - Artola 14/03/2018 12:19");
+				out.print(
+						"<p style='text-align: center; font-size: 30px; color:red;'>El libro ha de tener un titulo y autor</p>");
 			}
-
 		}
-
-	}
 	//Esta accion es de eliminar
 	if (request.getParameter("eliminar") != null) {
 		int id = Integer.parseInt(request.getParameter("id"));
 		modeloLibro.delete(id);
 	}
 	//Esta accion es de modificar
-	if (request.getParameter("guardar") != null){
-		if (request.getParameter("titulo") != ("") && request.getParameter("autor") != ("")) {
-			String titulo = request.getParameter("titulo");
-			String autor = request.getParameter("autor");
-			
+		if (request.getParameter("mid") != null) {
+			Libro libro = new Libro();
+			String titulo = request.getParameter("mtitulo");
+			String autor = request.getParameter("mautor");
+			int id = Integer.parseInt(request.getParameter("mid"));
+			libro.setTitulo(titulo);
+			libro.setAutor(autor);
+			libro.setId(id);
+			modeloLibro.update(libro);
 		}
-	}else{
-		
-	}
 	ArrayList<Libro> libros = modeloLibro.selectAll();
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -57,8 +60,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script>
 	function crearLibro() {
 		document.getElementById("titulo").innerHTML = "<input type=text name='titulo'/>";
@@ -126,13 +128,14 @@
 					<td style="width: 100px;"><a
 						href="fichalibro.jsp?id=<%=libro.getId()%>">Ver</a></td>
 					<td style="width: 100px;"><a href="eliminarLibro.jsp?id=<%=libro.getId()%>" onclick="return confirmarEliminarLibro()">Eliminar</a></td>
-					<td id="modificar" style="width: 100px;"><input type="button"
-					value="Modificar"
-					onclick="modificarLibro(<%=libro.getId()%>,'<%=libro.getTitulo()%>','<%=libro.getAutor()%>')"></td>
+					<td id="modificar" style="width: 100px;">
+					<input type="button" value="Modificar"
+					onclick="modificarLibro(<%=libro.getId()%>,'<%=libro.getTitulo()%>','<%=libro.getAutor()%>')">
+					<%
+						}
+					%>
+				</td>
 				</tr>
-				<%
-					}
-				%>
 				<tr>
 					<td id="titulo"></td>
 					<td id="autor"></td>

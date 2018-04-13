@@ -13,10 +13,21 @@ public class Usuario {
 	private String password;
 	private String rol;
 	private String imagen;
+	
+	public static final String USUARIO = "usuario";
+	public static final String ADMINISTRADOR = "admin";
 	private ArrayList<Prestamo> prestamos;
 
 	public Usuario() {
 
+	}
+
+	public static String getUsuario() {
+		return USUARIO;
+	}
+
+	public static String getAdministrador() {
+		return ADMINISTRADOR;
 	}
 
 	Usuario(int id, String nombre, String apellido, int edad, String dni, Date fechaNacimiento, String password,
@@ -29,7 +40,6 @@ public class Usuario {
 		this.fechaNacimineto = fechaNacimiento;
 		this.password = password;
 		this.rol = rol;
-		this.imagen = imagen;
 	}
 
 	public int getId() {

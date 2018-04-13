@@ -26,12 +26,13 @@
 			<tr>
 				<th scope="col">Titulo</th>
 				<th scope="col">Autor</th>
+				<th scope="col">Imagen</th>
 				<th scope="col"></th>
 			</tr>
 		</thead>
 		<%
 			out.print("<tr><td>" + libro.getTitulo() + "</td><td>" + libro.getAutor() + "</td><td>"
-					+ "<a href='listar.jsp'>Listar libros</a>" + "</td></tr>");
+					+ "<tr><td>" + libro.getImagen() + "</td><td>" + "<a href='listar.jsp'>Listar libros</a>" + "</td></tr>");
 		%>
 
 	</table>

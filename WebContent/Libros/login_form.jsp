@@ -5,8 +5,8 @@
 <link rel="stylesheet" type="text/css" href="../css/login.css">
 <form class="login" action="login.jsp" method="post">
     <h1 class="login-title">Inicio de sesion</h1>
-    <input type="text" class="login-input" placeholder="DNI" name="dni" autofocus>
-    <input type="password" class="login-input" placeholder="Password" name="password">
+    <input type="text" class="login-input" placeholder="DNI" name="dni" autofocus value="12344321L">
+    <input type="password" class="login-input" placeholder="Password" name="password" value="1234">
     <input type="submit" value="Iniciar sesion" class="login-button">
   	<p class="login-lost"><a href="#">Has olvidado la contraseña?</a></p>
   </form>
