@@ -7,7 +7,6 @@ public class Usuario {
 	private int id;
 	private String nombre;
 	private String apellido;
-	private int edad;
 	private String dni;
 	private Date fechaNacimineto;
 	private String password;
@@ -19,12 +18,11 @@ public class Usuario {
 
 	}
 
-	Usuario(int id, String nombre, String apellido, int edad, String dni, Date fechaNacimiento, String password,
-			String rol, String imagen) {
+	Usuario(int id, String nombre, String apellido, String dni, Date fechaNacimiento, String password, String rol,
+			String imagen) {
 		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.edad = edad;
 		this.dni = dni;
 		this.fechaNacimineto = fechaNacimiento;
 		this.password = password;
@@ -54,14 +52,6 @@ public class Usuario {
 
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
-	}
-
-	public int getEdad() {
-		return edad;
-	}
-
-	public void setEdad(int edad) {
-		this.edad = edad;
 	}
 
 	public String getDni() {

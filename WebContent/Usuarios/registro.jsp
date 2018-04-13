@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%
+	//Ver si esta loggeado
+	Object objeto = session.getAttribute("usuario");
+	if (objeto != null) {
+		response.sendRedirect("../biblioteca.jsp");
+	}
+%>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -74,23 +81,24 @@
 					</div>
 
 					<div class="form-group">
-						<label for="fechaNac" class="cols-sm-2 control-label">Fecha de nacimiento</label>
+						<label for="fechaNac" class="cols-sm-2 control-label">Fecha
+							de nacimiento</label>
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i
 									class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
-									type="date" class="form-control" name="fechaNac"
-									id="date" placeholder="Inserte fecha de nacimiento" />
+									type="date" class="form-control" name="fechaNac" id="date"
+									placeholder="Inserte fecha de nacimiento" />
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="form-group ">
 						<input type="submit" value="Registar"
 							class="btn btn-primary btn-lg btn-block login-button">
 					</div>
 					<div class="login-register">
-						<a href="index.jsp">Login</a>
+						<a href="../index.jsp">Login</a>
 					</div>
 				</form>
 			</div>
