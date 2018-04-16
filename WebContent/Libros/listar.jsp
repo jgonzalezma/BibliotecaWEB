@@ -131,7 +131,7 @@
 					<td style="width: 100px;"><a href="eliminarLibro.jsp?id=<%=libro.getId()%>" onclick="return confirmarEliminarLibro()">Eliminar</a></td>
 					<td id="modificar" style="width: 100px;">
 					<input type="button" value="Modificar"
-					onclick="modificarLibro(<%=libro.getId()%>,'<%=libro.getTitulo()%>','<%=libro.getAutor()%>')">
+					onclick="modificarLibro(<%=libro.getId()%>,'<%=libro.getTitulo()%>','<%=libro.getAutor()%>')">					
 					<%
 						}
 					%>
@@ -145,7 +145,6 @@
 					<td id="id"></td>
 					<td id="mboton"></td>
 				</tr>
-
 			</table>
 		</form>
 	</div>

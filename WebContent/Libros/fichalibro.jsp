@@ -32,7 +32,7 @@
 		</thead>
 		<%
 			out.print("<tr><td>" + libro.getTitulo() + "</td><td>" + libro.getAutor() + "</td><td>"
-					+ libro.getImagen() + "</td><td>" + "<a href='listar.jsp'>Listar libros</a>" + "</td></tr>");
+					+ "<img src='../images/" + libro.getImagen() + "'height=100 width=100>" + "</td><td>" + "<a href='listar.jsp'>Listar libros</a>" + "</td></tr>");
 		%>
 
 	</table>

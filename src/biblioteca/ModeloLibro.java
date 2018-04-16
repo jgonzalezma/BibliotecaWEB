@@ -33,6 +33,7 @@ public class ModeloLibro extends Conector {
 			libro.setId(rs.getInt("id"));
 			libro.setAutor(rs.getString("autor"));
 			libro.setTitulo(rs.getString("titulo"));
+			libro.setImagen(rs.getString("imagen"));
 		} catch (SQLException e) {
 			// TODO: handle exception
 		}
